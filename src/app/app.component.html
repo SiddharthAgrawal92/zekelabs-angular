@@ -1,0 +1,61 @@
+<hello [name]="name" name2="{{name2}}" child_desc="{{description}}"></hello>
+
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+
+<button appButtonClick (click)="change2Name()" [disabled]="isDisabled">Parent</button>
+
+<!-- <div (mouseenter)="change2Name()">
+  {{ 100/10 + 'Here is the Math!' + getData() }}
+</div> -->
+<!-- <img src={{imagePath}}> -->
+<!-- <img [src]="imagePath" [name]="imageName"> -->
+
+<br />
+<br />
+<input [(ngModel)]="description" />Input
+
+<br /><br />
+<span *ngIf="show" [ngStyle]="flag ? customStyle: customStyle2"
+  [ngClass]="{'blueBackgroundClass orangeBackgroundClass blackBackgroundClass' : true}">I am
+  enabled
+  now
+</span>
+<br />
+<br />
+<div [ngSwitch]="switch_expression">
+  <span *ngSwitchCase="'match_span_1'">Span 1</span>
+  <span *ngSwitchCase="'match_span_2'">Span 2</span>
+  <span *ngSwitchCase="'match_span_3'">Span 3</span>
+</div>
+<br />
+<button (click)="enableSecondSpan()">Enable Span 2</button>
+<br />
+<br />
+
+<table>
+  <thead>
+    <tr customDirective #template_Variable>
+      <td>S.No.</td>
+      <td>Name</td>
+      <td>Profile</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items; let indexEl=index;">
+      <td>{{indexEl+1}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.profile}}</td>
+      {{first}}
+      {{last}}
+    </tr>
+  </tbody>
+</table>
+
+<!-- <div>{{description}}</div> -->
+
+<!-- <tr>
+  <td [colSpan]="1+1">Hello</td>
+</tr> -->

@@ -1,0 +1,22 @@
+p {
+  font-family: Lato;
+}
+
+.blueBackgroundClass {
+  background-color: blue;
+  padding-left: 20px;
+}
+
+.orangeBackgroundClass {
+  background-color: orange;
+  padding-left: 20px;
+}
+
+.blackBackgroundClass {
+  background-color: black;
+  padding-left: 20px;
+}
+
+table, tr, td {
+  border: solid 1px black;
+}
