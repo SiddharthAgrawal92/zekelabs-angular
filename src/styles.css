@@ -1,1 +1,4 @@
 /* Add application styles & imports to this file! */
+table, tr, td {
+    border: solid 1px black;
+}

@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
+
 })
 class AppComponent implements OnInit {
-  name: string = 'Angular 8';
-  name2: string = 'Welcome';
+  @ViewChild('myParagraph', { static: true }) paraElement: ElementRef;
+  parentName: string = 'Angular 8';
+  parentName2: string = 'Welcome';
   changeIt: 'blueBackgroundClass'
   // isDisabled: boolean = true;
   imagePath: string = '../assets/images/sample.jpeg';
@@ -35,17 +37,18 @@ class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    // console.log('parent NgOnInit', this.paraElement.nativeElement.value);
   }
 
   changeName() {
     console.log('changeName');
-    this.name = 'New Name';
+    this.parentName = 'New Name';
   }
 
   change2Name() {
-    console.log('change2Name');
-    this.name = 'Back to the future';
+    // this.paraElement.nativeElement.innerHTML = 'New thing has inserted in paragraph';
+    // console.log('change2Name');
+    // this.parentName = 'Back to the future';
     this.description = 'Default is now assigned';
     // this.show = !this.show;
     this.flag = !this.flag;
@@ -60,8 +63,12 @@ class AppComponent implements OnInit {
   }
 
   ngDoCheck() {
-    console.log('ngDoCheck Parent');
-    console.log('this.description', this.description);
+    // console.log('ngDoCheck Parent');
+    // console.log('this.description', this.description);
+  }
+
+  handleChildOutputValue($event) {
+    console.log('Emitted value from child is--> ', $event);
   }
 
 }

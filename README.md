@@ -77,4 +77,34 @@ Directives : (inbuilt Directives)
     NgStyle --> [ngStyle]=""
 
 ************************************************************************************
+####Custom Property binding  - []
+Alias to custom property binding = @Input(<alias_name: string>)
+####Custom Event Binding - ()
+Alias to custom event binding = @Output(<alias_name: string>)
 
+###View Encapsulation 
+Emulated (Default) - Css props are encapsulated within the component no child can access it
+None --> Removes the encapsulation and provides the CSS props globally
+ShadowDOM --> Attach a Shadow_Root to a component which encapsulates CSS properties in a component and provide them to other child within the scope of component
+
+###Template Variables - #<variable_name>
+
+###ViewChild - @ViewChild('template_variable') <variable_name> : ElementRef;
+
+###Content Projection - Project content/elements from parent to child enclosed within the child tag/selector
+<ng-content></ng-content>
+<ng-container></ng-container>
+
+conditional projection using <ng-content> use "select" attribute
+Use - <ng-content select="[<selector_of_element>]">
+selector should be given like - <element selector_of_element></element>
+
+Place to use is inside child from where content element is projected from parent
+##ContentChild - @ContentChild('template_variable') <variable_name> : ElementRef;
+<parent_template>
+    <child>
+    <element #template_variable></element>
+    </child>
+</parent_template>
+
+************************************************************************************

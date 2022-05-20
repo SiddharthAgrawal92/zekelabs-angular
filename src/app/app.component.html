@@ -1,11 +1,22 @@
-<hello [name]="name" name2="{{name2}}" child_desc="{{description}}"></hello>
+<button appButtonClick (click)="change2Name(hello)" [disabled]="isDisabled">Parent</button>
 
-<p>
+
+<br />
+<br />
+<br />
+<br />
+<hello *ngIf="flag" #hello [aliasedName]="parentName" [name2]="parentName2"
+  (newHelloEmitter)="handleChildOutputValue($event)" child_desc="{{description}}">
+  <h1 #myH1>Nice to see you!</h1>
+  <button projectedButton>Smile</button>
+  <p>This para is projected from parent comp</p>
+</hello>
+
+<p #myParagraph [ngClass]="'redBackgroundClass'">
   Start editing to see some magic happen :)
 </p>
 
 
-<button appButtonClick (click)="change2Name()" [disabled]="isDisabled">Parent</button>
 
 <!-- <div (mouseenter)="change2Name()">
   {{ 100/10 + 'Here is the Math!' + getData() }}
@@ -13,7 +24,7 @@
 <!-- <img src={{imagePath}}> -->
 <!-- <img [src]="imagePath" [name]="imageName"> -->
 
-<br />
+<!-- <br />
 <br />
 <input [(ngModel)]="description" />Input
 
@@ -52,7 +63,7 @@
       {{last}}
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <!-- <div>{{description}}</div> -->
 

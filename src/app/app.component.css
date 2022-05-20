@@ -18,5 +18,9 @@ p {
 }
 
 table, tr, td {
-  border: solid 1px black;
+  border: solid 3px blue;
 }
+
+/* .redBackgroundClass {
+  background-color: blue;
+} */

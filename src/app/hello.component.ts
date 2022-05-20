@@ -1,13 +1,19 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, DoCheck, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'hello',
   template: `  
-  <h1>{{name2}} User,</h1>
-  <h2>Hello {{name}}!</h2>
-  <app-custom></app-custom>
+ <!-- <div>
+ <ng-content select="[projectedButton]"></ng-content>
+ </div> -->
+  <ng-content></ng-content>
+  <!-- <h1>{{name2}} User,</h1>
+  <h2>Hello {{name}}!</h2> -->
+  <!-- <app-custom></app-custom> -->
+  <!-- <p [ngClass]="'redBackgroundClass'">This is a simple paragraph defined in hello comp</p> -->
+  <button (click)="emitValueToParent()">Send to Parent</button>
   `,
-  styles: [`h1 { font-family: Cursive; }`]
+  styleUrls: ['./hello.component.css'],
 })
 export class HelloComponent implements OnChanges,
   OnInit,
@@ -17,10 +23,16 @@ export class HelloComponent implements OnChanges,
   AfterViewInit,
   AfterViewChecked,
   OnDestroy {
-  @Input() name: string;
+  // @ContentChild('myH1', { static: false }) helloH1: ElementRef;
+  @Input('aliasedName') name: string;
   @Input() name2: string;
   @Input() child_desc: string;
+  @Output('newHelloEmitter') sendDataToParent: EventEmitter<string> = new EventEmitter();
   counter = 0;
+
+  constructor() {
+    console.log('Constructor is called!');
+  }
 
   ngOnChanges(prevValue) {
     console.log('ngOnChanges prevValue', prevValue);
@@ -54,4 +66,8 @@ export class HelloComponent implements OnChanges,
     console.log('ngOnDestroy');
   }
 
+  emitValueToParent() {
+    // this.helloH1.nativeElement.innerHTML = 'Projected Value for H1 has changed.';
+    // this.sendDataToParent.emit('Hello from hello component to parent!');
+  }
 }
