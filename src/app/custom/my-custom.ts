@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggerService } from '../services/logger.service';
 
 @Component({
   selector: 'app-custom',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loggerService: LoggerService) { }
 
   ngOnInit() {
+    this.loggerService.info(`My Custom Component Info: Your app is running on PORT - ${window.location.host.split(':')[1]}`);
+    this.loggerService.warn('My Custom Component Warn: Beware of fraudster 3rd party sites!');
+    this.loggerService.error('My Custom Component Error: Oops! Some hack has happened!');
   }
 
 }

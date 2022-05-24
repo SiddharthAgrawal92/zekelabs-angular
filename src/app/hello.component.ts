@@ -1,19 +1,27 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, DoCheck, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Subscription } from 'rxjs';
+import AppComponent from './app.component';
+import { DataService } from './services/data.service';
+import { LoggerService } from './services/logger.service';
+import { MessageService } from './services/message.service';
 
 @Component({
   selector: 'hello',
-  template: `  
+  template: `
  <!-- <div>
  <ng-content select="[projectedButton]"></ng-content>
- </div> -->
+ </div> --> 
   <ng-content></ng-content>
+  <button (click)="ping()">Ping</button>
+  {{message}}
   <!-- <h1>{{name2}} User,</h1>
   <h2>Hello {{name}}!</h2> -->
-  <!-- <app-custom></app-custom> -->
+  <app-custom></app-custom>
   <!-- <p [ngClass]="'redBackgroundClass'">This is a simple paragraph defined in hello comp</p> -->
   <button (click)="emitValueToParent()">Send to Parent</button>
   `,
   styleUrls: ['./hello.component.css'],
+  providers: [LoggerService]
 })
 export class HelloComponent implements OnChanges,
   OnInit,
@@ -29,8 +37,12 @@ export class HelloComponent implements OnChanges,
   @Input() child_desc: string;
   @Output('newHelloEmitter') sendDataToParent: EventEmitter<string> = new EventEmitter();
   counter = 0;
+  message: string;
+  messageSubscription: Subscription;
 
-  constructor() {
+  constructor(private loggerService: LoggerService,
+    private dataService: DataService,
+    private messageService: MessageService) {
     console.log('Constructor is called!');
   }
 
@@ -40,6 +52,19 @@ export class HelloComponent implements OnChanges,
 
   ngOnInit() {
     console.log('ngOnInit');
+    const items = this.dataService.getData();
+    console.log('Items from DataService:', items);
+    this.loggerService.info(`Hello Component Info: Your app is running on PORT - ${window.location.host.split(':')[1]}`);
+    this.loggerService.warn('Hello Component Warn: Beware of fraudster 3rd party sites!');
+    this.loggerService.error('Hello Component Error: Oops! Some hack has happened!');
+  }
+
+  ping() {
+    this.messageSubscription = this.messageService.receiveMessage().subscribe((res: any) => {
+      if (res) {
+        this.message = res;
+      }
+    });
   }
 
   ngDoCheck() {
@@ -64,6 +89,7 @@ export class HelloComponent implements OnChanges,
 
   ngOnDestroy() {
     console.log('ngOnDestroy');
+    this.messageSubscription.unsubscribe();
   }
 
   emitValueToParent() {

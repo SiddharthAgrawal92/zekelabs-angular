@@ -1,10 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { DataService } from './services/data.service';
+import { MessageService } from './services/message.service';
+// import { LoggerService } from './services/logger.service';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
-
 })
 class AppComponent implements OnInit {
   @ViewChild('myParagraph', { static: true }) paraElement: ElementRef;
@@ -28,7 +30,8 @@ class AppComponent implements OnInit {
   customStyle2 = { 'color': 'yellow', 'padding-left': '10px', 'margin-top': '10' };
   flag = true;
 
-  constructor() {
+  constructor(private dataService: DataService,
+    private messageService: MessageService) {
 
   }
 
@@ -37,7 +40,19 @@ class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log('parent NgOnInit', this.paraElement.nativeElement.value);
+    // console.log('parent NgOnInit', this.paraElement.nativeElement.value);        
+    // this.loggerService.info('App Comp Info: This is a app component/root.');
+    // this.loggerService.warn('App Comp Warn: Warning has raised from component/root.');
+    // this.loggerService.error('App Comp Error: Error has occurred in app component/root.');    
+  }
+
+  fetchData() {
+    const newItems = this.dataService.getData();
+    this.items = [...this.items, ...newItems];
+  }
+
+  pong() {
+    this.messageService.sendMessage(`${Math.floor(Math.random() * 100)} - Message from parent!`);
   }
 
   changeName() {

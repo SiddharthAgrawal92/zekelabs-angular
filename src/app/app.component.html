@@ -1,8 +1,8 @@
 <button appButtonClick (click)="change2Name(hello)" [disabled]="isDisabled">Parent</button>
 
-
 <br />
 <br />
+<button (click)="pong()">Pong</button>
 <br />
 <br />
 <hello *ngIf="flag" #hello [aliasedName]="parentName" [name2]="parentName2"
@@ -24,9 +24,9 @@
 <!-- <img src={{imagePath}}> -->
 <!-- <img [src]="imagePath" [name]="imageName"> -->
 
-<!-- <br />
 <br />
-<input [(ngModel)]="description" />Input
+<br />
+<!-- <input [(ngModel)]="description" />Input
 
 <br /><br />
 <span *ngIf="show" [ngStyle]="flag ? customStyle: customStyle2"
@@ -44,7 +44,7 @@
 <br />
 <button (click)="enableSecondSpan()">Enable Span 2</button>
 <br />
-<br />
+<br /> -->
 
 <table>
   <thead>
@@ -63,7 +63,9 @@
       {{last}}
     </tr>
   </tbody>
-</table> -->
+</table>
+<br />
+<button (click)="fetchData()">Fetch More Data</button>
 
 <!-- <div>{{description}}</div> -->
 
