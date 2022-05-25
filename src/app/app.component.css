@@ -17,6 +17,11 @@ p {
   padding-left: 20px;
 }
 
+.purpleBackgroundClass {
+  background-color: rgb(183, 0, 255);
+  padding-left: 20px;
+}
+
 table, tr, td {
   border: solid 3px blue;
 }

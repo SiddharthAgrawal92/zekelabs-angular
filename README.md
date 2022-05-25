@@ -1,9 +1,7 @@
 # zekelabs-angular-training
 
 #Code of all the topics that we'll cover with time will be shared & present in this github code. 
-
 ## Please refer to this README file for the theory part that we have so far discussed in different sessions.
-
 
 ************************************************************************************
 
@@ -42,6 +40,18 @@ Rendering Engine
 3. Install Angular CLI - npm install @angular/cli@8.3.29
 4. If NPM is throwing any error and doesn't allow you to create the angular app then run uninstall the Node.js 
     from program files and delete "npm" & "npm-cache" folder from folder path(C:\Users\<Windows Machine's Username>\AppData\Roaming) and repeat from Step #1.
+5. Now you can create new angular app using below command
+    $ng new <app_name>
+6. Use this if you want to create a workspace which contain multiple apps/libraries inside it (Read: https://angular.io/guide/file-structure#multiple-projects)
+    $ng new my-workspace --create-application false
+    $ng g application <app_name>
+    $ng generate library <library_name>
+Folder where app/libraries will get created from above command - projects/app_name/src
+
+##Link to get to know more about Angular file structure
+https://angular.io/guide/file-structure
+
+##Angular Versions
 
 Angular 2
 Angular 3 --> This version doesn't exist and skipped because angular is being developed in a single mono repo. And in Angular 2 there was a package @angular/router already 3.X version due to some huge development on it like route-preload so to avoid confusion releasing Angular as V3.X, with it’s route on version 4 it got skipped and version 4 was launched making all packages versions aligned,
@@ -158,14 +168,9 @@ https://angular.io/guide/hierarchical-dependency-injection
 1. ModuleInjectors
 We need to use @Injector({provideIn: <module_name>}) OR @NgModule({providers:[<service_name>]})
 
-Tree Shaking - All the unused code is removed and only the part being used i considered for the bundle.
+Tree Shaking - All the unused code is removed and only the part being used is considered for the bundle.
 
 Note: Tree shaking is done if we provide a service in @Injector({provideIn: <module_name>}) which only make it available for the defined module.
-
-If you want to create a workspace in a multi-app kind of structure
-$ng new my-workspace --create-application=false
-$ng new application-1
-Folder where app will get created from above command - projects/application1/src
 
 2. Element Injectors
 When we need to provide a service to a particular element component/pipes/directive
@@ -173,3 +178,12 @@ We need to use @Component({providers:[<service_name>]})
 
 Note: Tree shaking is done if we provide a service in @Component({providers: [<service_name>]}) which only make it available for the defined module.
 
+
+
+##Routing
+
+1. Command to generate a module with routing
+$ng g m <module_name> --routing
+
+2. Command to generate a guard
+$ng g g <guard_name>

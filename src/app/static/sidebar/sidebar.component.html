@@ -1,0 +1,27 @@
+<a routerLink="/contact">
+  <button>Contact</button>
+</a>
+
+<br />
+
+<a routerLink="/about">
+  <button>About</button>
+</a>
+
+<br />
+
+<a routerLink="/contact/admin">
+  <button>Contact Admin</button>
+</a>
+
+<a routerLink="/contact/users">
+  <button>Contact Single-Param</button>
+</a>
+
+<a routerLink="/contact" [queryParams]="{name: 'sid', year: 2022}" [fragment]="'hello'">
+  <button>Contact queryParam property</button>
+</a>
+
+<a routerLink="/team">
+  Team
+</a>
