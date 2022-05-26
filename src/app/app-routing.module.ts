@@ -1,34 +1,39 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AboutComponent } from "./about/about/about.component";
-import AppComponent from "./app.component";
 import { ChildAComponent } from "./contact/child-a/child-a.component";
 import { ChildBComponent } from "./contact/child-b/child-b.component";
-import { ContactComponent } from "./contact/contact/contact.component";
-import { CanloadGuard } from "./guards/canload.guard";
+import { ContactMainComponent } from "./contact/contact-main/contact-main.component";
+import { FormComponent } from "./form/form.component";
+import { ActivateGuard } from "./guards/activate.guard";
+import { CanLoadGuard } from "./guards/can-load.guard";
 import { DeactivateGuard } from "./guards/deactivate.guard";
 import { NotfoundComponent } from "./notfound/notfound.component";
 
 const routes: Routes = [
-    { path: '', redirectTo: '/about', pathMatch: 'full' },
-    {
-        path: 'contact',
-        // canLoad: [CanloadGuard],
-        canDeactivate: [DeactivateGuard],
-        // component: ContactComponent,
-        loadChildren: () => import('./contact/contact.module').then(module => module.ContactModule),
-        // children: [
-        //     { path: 'child-a', component: ChildAComponent },
-        //     { path: 'child-b', component: ChildBComponent },
-        // ]
-    },
-    { path: 'about', component: AboutComponent },
-    { path: '**', component: NotfoundComponent }
+  { path: '', redirectTo: '/homepage', 'pathMatch': 'full' },
+  { path: 'homepage', loadChildren: () => import('./homepage/homepage.module').then(module => module.HomepageModule) },
+  { path: 'about', loadChildren: () => import('./about/about.module').then(module => module.AboutModule) },
+  {
+    path: 'contact',
+    // path: 'contact', component: ContactMainComponent,
+    loadChildren: () => import('./contact/contact.module').then(module => module.ContactModule),
+    // children: [
+    //   { path: 'child-a', component: ChildAComponent },
+    //   { path: 'child-b', component: ChildBComponent }
+    // ],
+    // canActivate: [ActivateGuard],
+    canDeactivate: [DeactivateGuard],
+    // canLoad: [CanLoadGuard],
+  },
+  { path: 'form', component: FormComponent },
+  { path: '**', component: NotfoundComponent }
 ]
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
-    declarations: [AboutComponent]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  // declarations: [ContactMainComponent],
+  providers: []
 })
+
 export class AppRoutingModule { }

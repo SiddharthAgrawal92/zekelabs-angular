@@ -1,6 +1,4 @@
-import { Component, Injectable } from '@angular/core';
-import AppComponent from '../app.component';
-import { HelloComponent } from '../hello.component';
+import { Injectable } from '@angular/core';
 
 export abstract class Logger {
   info: any;

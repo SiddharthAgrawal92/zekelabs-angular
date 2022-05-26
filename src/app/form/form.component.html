@@ -1,0 +1,88 @@
+<div class="card">
+    <h3 class="card-header"> Form Example</h3>
+    <div class="card-body">
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Title</label>
+                    <select name="title" class="form-control" [(ngModel)]="model.title" #title="ngModel"
+                        [ngClass]="{'is-invalid': f.submitted && title.invalid}" required>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                    </select>
+                    <div *ngIf="f.submitted && title.invalid" class="purpleBackgroundClass">
+                        <div *ngIf="title.errors.required">This field is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>First Name</label>
+                    <input type="text" name="firstName" class="form-control" [(ngModel)]="model.firstName"
+                        #firstName="ngModel" [ngClass]="{'is-invalid': f.submitted && firstName.invalid}" required />
+                    <div *ngIf="f.submitted && firstName.invalid" class="purpleBackgroundClass">
+                        <div *ngIf="firstName.errors.required">This field is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Last Name</label>
+                    <input type="text" name="lastName" class="form-control" [(ngModel)]="model.lastName"
+                        #lastName="ngModel" [ngClass]="{'is-invalid': f.submitted && lastName.invalid}" required />
+                    <div *ngIf="f.submitted && lastName.invalid" class="purpleBackgroundClass">
+                        <div *ngIf="lastName.errors.required">This field is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel"
+                    [ngClass]="{'is-invalid': f.submitted && email.invalid}" required email />
+                <div *ngIf="f.submitted && email.invalid" class="purpleBackgroundClass">
+                    <div *ngIf="email.errors.required">This field is required</div>
+                    <div *ngIf="email.errors.email">Please provide a valid email</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" [(ngModel)]="model.password"
+                        #password="ngModel" [ngClass]="{'is-invalid': f.submitted && password.invalid}" required
+                        minlength="6" />
+                    <div *ngIf="f.submitted && password.invalid" class="purpleBackgroundClass">
+                        <div *ngIf="password.errors.required">This field is required</div>
+                        <div *ngIf="password.errors.minlength">Minimum 6 characters are required</div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirmPassword" class="form-control"
+                        [(ngModel)]="model.confirmPassword" #confirmPassword="ngModel"
+                        [ngClass]="{'is-invalid': f.submitted && confirmPassword.invalid}" required minlength="6" />
+                    <div *ngIf="f.submitted && confirmPassword.invalid" class="purpleBackgroundClass">
+                        <div *ngIf="confirmPassword.errors.required">This field is required</div>
+                        <div *ngIf="confirmPassword.errors.minlength">Minimum 6 characters are required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <input type="checkbox" name="acceptTerms" [(ngModel)]="model.acceptTerms" #acceptTerms="ngModel"
+                    [ngClass]="{'is-invalid': f.submitted && acceptTerms.invalid}" required />
+                <label>Agree to the Terms & Conditions</label>
+                <div *ngIf="f.submitted && acceptTerms.invalid" class="purpleBackgroundClass">
+                    <div *ngIf="acceptTerms.errors.required">Please accept the terms to proceed ahead</div>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <button class="btn-primary" type="submit">Register</button>
+                <button class="btn-danger" type="reset">Cancel</button>
+            </div>
+            <!-- title
+            first name
+            last name
+            email
+            password
+            confirm password
+            agree to terms
+            register cancel - buttons -->
+        </form>
+    </div>
+</div>

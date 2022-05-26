@@ -37,7 +37,8 @@ Rendering Engine
 1. Install Node.js Version 14.16.1 (Link - https://nodejs.org/ja/blog/release/v14.16.1/)
 2. This will install NPM Version 6.14.12, if this version is not installed then install it from this command-
     $npm install -g npm@6.14.12
-3. Install Angular CLI - npm install @angular/cli@8.3.29
+3. Install Angular CLI - 
+    $npm install -g @angular/cli@8.3.29
 4. If NPM is throwing any error and doesn't allow you to create the angular app then run uninstall the Node.js 
     from program files and delete "npm" & "npm-cache" folder from folder path(C:\Users\<Windows Machine's Username>\AppData\Roaming) and repeat from Step #1.
 5. Now you can create new angular app using below command

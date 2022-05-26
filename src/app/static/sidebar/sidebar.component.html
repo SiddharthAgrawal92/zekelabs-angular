@@ -1,27 +1,33 @@
-<a routerLink="/contact">
-  <button>Contact</button>
-</a>
+<p>sidebar works!</p>
 
-<br />
+<button routerLink="/homepage" routerLinkActive="activeLink">Homepage</button>
+&nbsp;&nbsp;
 
-<a routerLink="/about">
-  <button>About</button>
-</a>
+<button routerLink="/form" routerLinkActive="activeLink">Form</button>
+&nbsp;&nbsp;
 
-<br />
+<button routerLink="/contact" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}">Contact</button>
+&nbsp;&nbsp;
 
-<a routerLink="/contact/admin">
-  <button>Contact Admin</button>
-</a>
+<button routerLink="/about" routerLinkActive="activeLink">About</button>
+&nbsp;&nbsp;
+
+<button routerLink="/contact/admin" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}">Contact
+  Admin
+</button>
 
 <a routerLink="/contact/users">
   <button>Contact Single-Param</button>
 </a>
 
+<!-- <a routerLink="/contact/users/customer">
+  <button>Contact Multi-Param</button>
+</a> -->
+
 <a routerLink="/contact" [queryParams]="{name: 'sid', year: 2022}" [fragment]="'hello'">
   <button>Contact queryParam property</button>
 </a>
 
-<a routerLink="/team">
+<!-- <a routerLink="/team">
   Team
-</a>
+</a> -->

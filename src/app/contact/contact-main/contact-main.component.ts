@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  templateUrl: './contact-main.component.html',
+  styleUrls: ['./contact-main.component.css']
 })
-export class ContactComponent implements OnInit {
+export class ContactMainComponent implements OnInit {
 
   constructor(private route: Router, private activatedRoute: ActivatedRoute) { }
 

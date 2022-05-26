@@ -1,0 +1,71 @@
+<br />
+<button appButtonClick (click)="useObservable()" [disabled]="isDisabled">Parent</button>
+<br />
+<br />
+<button (click)="pong()">Pong</button>
+<br />
+<hello *ngIf="flag" #hello [aliasedName]="parentName" [name2]="parentName2"
+  (newHelloEmitter)="handleChildOutputValue($event)" child_desc="{{description}}">
+  <h1 #myH1>Nice to see you!</h1>
+  <button projectedButton>Smile</button>
+  <p>This para is projected from parent comp</p>
+</hello>
+
+<p #myParagraph [ngClass]="'redBackgroundClass'">
+  Start editing to see some magic happen :)
+</p>
+
+
+
+<!-- <div (mouseenter)="change2Name()">
+  {{ 100/10 + 'Here is the Math!' + getData() }}
+</div> -->
+<!-- <img src={{imagePath}}> -->
+<!-- <img [src]="imagePath" [name]="imageName"> -->
+
+<br />
+<br />
+<!-- <input [(ngModel)]="description" />Input
+
+<br /><br />
+<span *ngIf="show" [ngStyle]="flag ? customStyle: customStyle2"
+  [ngClass]="{'blueBackgroundClass orangeBackgroundClass blackBackgroundClass' : true}">I am
+  enabled
+  now
+</span>
+<br />
+<br />
+<div [ngSwitch]="switch_expression">
+  <span *ngSwitchCase="'match_span_1'">Span 1</span>
+  <span *ngSwitchCase="'match_span_2'">Span 2</span>
+  <span *ngSwitchCase="'match_span_3'">Span 3</span>
+</div>
+<br />
+<button (click)="enableSecondSpan()">Enable Span 2</button>
+<br />
+<br /> -->
+
+<table>
+  <thead>
+    <tr customDirective #template_Variable>
+      <td>S.No.</td>
+      <td>Name</td>
+      <td>Profile</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items; let indexEl=index;">
+      <td>{{indexEl+1}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.profile}}</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<button (click)="fetchData()">Fetch More Data</button>
+
+<!-- <div>{{description}}</div> -->
+
+<!-- <tr>
+  <td [colSpan]="1+1">Hello</td>
+</tr> -->

@@ -1,19 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
-import { Observable } from 'rxjs';
-import { ContactComponent } from '../contact/contact/contact.component';
+import { ContactMainComponent } from '../contact/contact-main/contact-main.component';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class DeactivateGuard implements CanDeactivate<ContactComponent> {
-  constructor() { }
-  canDeactivate(component: ContactComponent) {
+@Injectable()
+export class DeactivateGuard implements CanDeactivate<ContactMainComponent> {
+  constructor() {
+  }
+
+  canDeactivate(component: ContactMainComponent) {
     const flag = confirm('Are you sure you want to go away from the page?');
-    if (flag) {
-      return true;
-    } else {
-      return false;
-    }
+    return flag;
   }
 }

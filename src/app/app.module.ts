@@ -1,30 +1,33 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
-import AppComponent from './app.component';
-import { HelloComponent } from './hello.component';
-import { CustomComponent } from './custom/my-custom';
-import { ButtonClickDirective } from './button-click.directive';
-import { ServerService } from './services/server.service';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { DeactivateGuard } from './guards/deactivate.guard';
+import { ActivateGuard } from './guards/activate.guard';
+import { CanLoadGuard } from './guards/can-load.guard';
 import { HeaderComponent } from './static/header/header.component';
 import { FooterComponent } from './static/footer/footer.component';
 import { SidebarComponent } from './static/sidebar/sidebar.component';
-import { NotfoundComponent } from './notfound/notfound.component';
+import { FormComponent } from './form/form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
   declarations: [
     AppComponent,
-    HelloComponent,
-    CustomComponent,
-    ButtonClickDirective,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    FormComponent,
   ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  providers: [ActivateGuard, DeactivateGuard, CanLoadGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
