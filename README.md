@@ -184,7 +184,141 @@ Note: Tree shaking is done if we provide a service in @Component({providers: [<s
 ##Routing
 
 1. Command to generate a module with routing
-$ng g m <module_name> --routing
+    $ng g m <module_name> --routing
 
 2. Command to generate a guard
-$ng g g <guard_name>
+    $ng g g <guard_name>
+
+************************************************************************************
+##Observables & Promises
+
+1. A function which takes an observer and returns a function
+
+		single		multiple
+pull	function	iterator
+push	promise		observables
+
+2. Observables are "lazy" Push collections of multiple values.
+3. In this way they are similar to Promises: both are data producers which provide (push) data to 
+    consumers at  their own discretion.
+4. This is in contrast to the pull model, in which a data consumer (ie the code calling a function) 
+    dictates when it receives data from the producer (ie the function). The producer is unaware
+    of when data will be requested(pulled) by the consumer.
+5. However, Observables differ from Promises in critical ways.
+    as noted in the above table, Promises eventually return only a single value whereas 
+    Observables can return 0 to infinity values.
+6. The value returned by a Promise is always the same no matter which callback receives it. 
+7. However an Observable, just like a function, returns different values each time it is called. 
+    Two function calls will return two separate side effects and two Observable calls trigger 
+    two separate side effects.
+8. Another key distinction is that Promises are always asynchronous: code execution will continue
+     until the Promise resolves, at which point the callback(s) provided to them will be executed. 
+9. Observables can be either synchronous or asynchronous, depending on what’s going on inside of them.
+10. Promises can be thought of as ‘hot’ — they try to resolve as soon as they are created, 
+    whether or not you call then()on them or not.
+14. Observables on the other hand are ‘cold’ — they don’t evaluate anything until you call them. 
+	Until that happens, Observables just sit there, hence why they are called lazy. 
+15. But but but... not all Observables are cold.
+	They can be forced into being hot, such as if they are created from a Promise like Subjects
+
+##How to create an observable 
+1. Importing
+    import {Observable} from 'rxjs';
+2. Creating    
+    const observable = new Observable(function subscribe(observer){
+        observer.next(1);
+        observer.complete();        
+    });
+    const observer = {
+        next: (value)=> console.log(value),
+        complete: ()=> console.log('done'),
+        error: (err)=> console.error(err),
+    }
+3. Subscribing
+    observable.subscribe(observer);
+
+##How to create a Promise
+const promise = new Promise((resolve, reject)=>{
+    resolve(); //this method is used for resolving the promise(such as data on API response)
+    reject(); //this method is used for rejecting the promise(such as error on API response)
+})
+
+#Note: By default promises are asynchronous in nature in order to make them synchronous
+     we are required to use async/await
+1. Use 'async' keyword in the method where promise is defined
+2. Then use 'await' keyword in front of promise to stop the code execution at this point by
+    making it synchronous.
+
+************************************************************************************
+
+##Template Driven forms
+
+Link - https://angular.io/guide/forms
+
+************************************************************************************
+
+##Reactive Forms
+
+Link - https://angular.io/guide/reactive-forms
+
+1. Reactive forms provides a model driven approach of different input values that change 
+    over time
+2. Reactive use an explicit and immutable approach to managing the state of a form at a 
+    given point in time. Each change to this form state return a new state, which maintains the 
+    integrity of model between the changes.
+3. Reactive forms are built around observable streams where form input values are provided
+    stream of input values, and these can these be accessed synchronously.
+
+##Differences between Template Driven and Reactive form
+1. Reactive form provide direct access to the form model as compare to template driven forms
+    reactive forms are more scalable, reusable & testable.
+
+    On other side template driven requires the directives to create and manipulate the
+    form object model. They are only useful when we want to add a simple form to the app
+    such as signup, login etc. if we want to add these type of form straightforward directly 
+    to an app, but they are not scalable like reactive forms.
+
+2. If forms are central part of you app, scalability matters.
+    Here all the features of form manipulation and creation in scalable and dynamic manner
+    can only be provided by Reactive forms.
+
+3. Reactive form require less time to setup and they does nto require deep understanding 
+    of change detection.
+    On the other side template driven forms are hard to test because of their asyncronous 
+    data flow behavior they require more complex test cases setup.
+
+
+###How to use Reactive forms - 
+1. Register: a form module in your application, needs to be imported in module of the app
+    this provide the form module directive that you need for reactive form.
+2. Generate: a form control instance in you component.
+3. Register: the form control in your template.
+
+##Changing form control from model/component
+For this reactive form has some methods to set the value of form control.
+    setValue();
+
+
+###Using FormBuilder service generate the form controls
+
+1. Import the FormBuilder class in component
+2. Inject the service in constructor 
+3. Generate the controls of form using it
+
+constructor(private fb:  FormBuilder){}
+
+myForm = this.fb.group({
+    name: [<default_value>],
+    address: this.fb.group({
+        street: [''],
+        city: ['']
+    })
+})
+
+##Validators in Reactive Form control
+
+1. Import a validator function in you form component
+2. Add the validator in the field of the form
+3. If any validator accepts any logic put a logic to it
+
+************************************************************************************

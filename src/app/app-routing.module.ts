@@ -26,6 +26,7 @@ const routes: Routes = [
     // canLoad: [CanLoadGuard],
   },
   { path: 'form', component: FormComponent },
+  { path: 'reactive-form', loadChildren: () => import('./reactive-form/reactive-form.module').then(module => module.ReactiveFormModule) },
   { path: '**', component: NotfoundComponent }
 ]
 
