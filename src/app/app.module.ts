@@ -12,6 +12,7 @@ import { FooterComponent } from './static/footer/footer.component';
 import { SidebarComponent } from './static/sidebar/sidebar.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule } from '@angular/forms';
+// import { MyPipe } from './custom-pipes/my.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     SidebarComponent,
     NotfoundComponent,
-    FormComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

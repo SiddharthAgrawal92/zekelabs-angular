@@ -21,8 +21,8 @@ export class HomepageMainComponent implements OnInit {
   imageName: string = 'image_name';
   maliciousString: string = "Template malicious string <script>alert('I am dangerous!')</script>";
   description: string;
-  items: { name: string, profile: string }[] = [
-    { name: 'John', profile: 'SSE' },
+  items: any = [
+    { name: 'John Cena', profile: 'SSE', email: 'abc@xyz.com' },
     { name: 'Michael', profile: 'QA' },
     { name: 'Nancy', profile: 'Designer' },
     { name: 'Mathew', profile: 'Developer' },
@@ -45,7 +45,6 @@ export class HomepageMainComponent implements OnInit {
   }
 
   ngOnInit() {
-
     // console.log('parent NgOnInit (Para Value):', this.paraElement.nativeElement.innerHTML);
     // this.loggerService.info('App Comp Info: This is a app component/root.');
     // this.loggerService.warn('App Comp Warn: Warning has raised from component/root.');
@@ -163,7 +162,16 @@ export class HomepageMainComponent implements OnInit {
       outPutSubscription.unsubscribe();
       timerSubscription.unsubscribe();
     }, 7000);
+  }
 
+  compareFun(a, b) {
+    if (a < b) {
+      return -1;
+    } else if (a > b) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
 }

@@ -5,6 +5,7 @@ import { HomepageRoutingModule } from './homepage-routing.module';
 import { HomepageMainComponent } from './homepage-main/homepage-main.component';
 import { HelloComponent } from './hello/hello.component';
 import { CustomComponent } from './custom/my-custom';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CustomComponent } from './custom/my-custom';
   ],
   imports: [
     CommonModule,
-    HomepageRoutingModule
+    HomepageRoutingModule,
+    SharedModule
   ]
 })
 export class HomepageModule { }

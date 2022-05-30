@@ -48,15 +48,20 @@
 
     <br />
 
-    <button (click)="resetForm()">Reset</button>
+    <button type="button" (click)="resetForm()">Reset</button>
 
     <button type="submit">Submit</button>
+    <br />
+    <br />
 
-    <button (click)="insertAlias()">Insert Alias</button>
-
-    <div *ngFor="let alias of aliases.controls; let i = index">
-        <label for="alias-{{i}}">Alias-{{i+1}}</label>
-        <input id="alias-{{i}}" formControlName="i" />
+    <div formArrayName="aliases">
+        <button type="button" (click)="insertAlias()">Insert Alias</button>
+        <div *ngFor="let alias of aliases.controls; let i = index">
+            <label for="alias-{{i}}">Alias-{{i}}</label>
+            <input id="alias-{{i}}" [formControlName]="i" />
+            <button type="button" (click)="removeItem(i)">X</button>
+            {{aliases.at(i).value}}
+        </div>
     </div>
 
 </form>

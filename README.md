@@ -322,3 +322,15 @@ myForm = this.fb.group({
 3. If any validator accepts any logic put a logic to it
 
 ************************************************************************************
+
+###PIPES
+1. These are decorator that marks as a class has some metadata which is responsible
+    for converting the value we supply.
+2. Pipe symbol('|') is used inside the template for calling them
+3. Two properties needed to be passed as a metadata inside the @Pipe decorator are 
+    a. 'name' - typically uses lowerCamelCase to define it, because they cannot contain hyphens
+    b. pure? - default it is set to true. Here true means that this the pipe's transform() will only get
+                 called whenever there is any change in the input value.
+4. Pipe class name should be UpperCamelCase(general way of giving name to classes).
+5. Pipe Class must implement a interface called PipeTransform.
+6. Pipe needs to be declared inside a module.

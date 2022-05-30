@@ -85,11 +85,15 @@ export class AdvanceComponent implements OnInit {
   }
 
   get aliases() {
-    return this.profile.get('aliases') as FormArray;
+    return this.profile.controls['aliases'] as FormArray;
   }
 
   insertAlias() {
     this.aliases.push(this.fb.control(''));
+  }
+
+  removeItem(controlIndex: number) {
+    this.aliases.removeAt(controlIndex);
   }
 
 }

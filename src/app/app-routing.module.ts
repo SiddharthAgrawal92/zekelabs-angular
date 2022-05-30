@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/homepage', 'pathMatch': 'full' },
   { path: 'homepage', loadChildren: () => import('./homepage/homepage.module').then(module => module.HomepageModule) },
   { path: 'about', loadChildren: () => import('./about/about.module').then(module => module.AboutModule) },
+  { path: 'my-pipes', loadChildren: () => import('./pipes/pipes.module').then(module => module.PipesModule) },
   {
     path: 'contact',
     // path: 'contact', component: ContactMainComponent,

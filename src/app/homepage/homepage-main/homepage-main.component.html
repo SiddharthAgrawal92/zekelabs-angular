@@ -49,15 +49,17 @@
   <thead>
     <tr customDirective #template_Variable>
       <td>S.No.</td>
-      <td>Name</td>
-      <td>Profile</td>
+      <td *ngFor="let item of items[0] | keyvalue : compareFun">
+        {{item.key | uppercase}}
+      </td>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of items; let indexEl=index;">
       <td>{{indexEl+1}}</td>
-      <td>{{item.name}}</td>
+      <td>{{item.name | my : false : true}}</td>
       <td>{{item.profile}}</td>
+      <td>{{item.email}}</td>
     </tr>
   </tbody>
 </table>

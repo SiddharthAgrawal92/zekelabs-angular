@@ -1,0 +1,47 @@
+<h3>Pipe Example</h3>
+
+<div>
+    <label>Date & Time</label>
+    {{myDate | date : 'medium' | lowercase }}
+</div>
+<div>
+    <label>Currency</label> {{100 | currency : 'INR' : 'symbol'}}
+    <br />
+    <label>LowerCase:</label> {{'hELLo worLD' | lowercase}}
+    <br />
+    <label>UpperCase:</label> {{'hELLo worLD' | uppercase}}
+    <br />
+    <label>TitleCase:</label> {{'hELLo worLD' | titlecase}}
+</div>
+<hr />
+
+<div>
+    <label>Percentage value transformed from Component: </label>{{myValue}}
+</div>
+<hr />
+
+<div>
+    <label>My Pipe:</label>
+    {{'Siddharth Agrawal' | my : false: true}}
+</div>
+<hr />
+
+<div>
+    <label>File Size(Pipe in Template):</label>
+    {{10102120 | fileSize}}
+</div>
+
+<div>
+    <label>File Size(Pipe in Component):</label>
+    {{fileSizeConvertedValue}}
+</div>
+<hr />
+
+<div>
+    <label>Async</label>
+    <br />
+    <label>Observable:</label> {{observable | async}}
+    <br />
+    <label>Promise:</label> {{promise | async}}
+</div>
+<hr />
