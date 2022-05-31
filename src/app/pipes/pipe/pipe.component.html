@@ -40,7 +40,14 @@
 <div>
     <label>Async</label>
     <br />
-    <label>Observable:</label> {{observable | async}}
+    <label>Observable:</label>
+    <div *ngFor="let item of observable | async; let i= index">
+        {{i+1}}
+        <li>User ID: {{item.userId}}</li>
+        <label><b>{{item.title}}</b></label>
+        <p>{{item.body}}</p>
+        <hr />
+    </div>
     <br />
     <label>Promise:</label> {{promise | async}}
 </div>

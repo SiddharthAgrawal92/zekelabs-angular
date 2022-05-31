@@ -1,0 +1,19 @@
+[
+    {
+        "name": "John Cena",
+        "profile": "SSE",
+        "email": "abc@xyz.com"
+    },
+    {
+        "name": "Michael",
+        "profile": "QA"
+    },
+    {
+        "name": "Nancy",
+        "profile": "Designer"
+    },
+    {
+        "name": "Mathew",
+        "profile": "Developer"
+    }
+]

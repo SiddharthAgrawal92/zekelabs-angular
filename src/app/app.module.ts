@@ -13,6 +13,8 @@ import { SidebarComponent } from './static/sidebar/sidebar.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule } from '@angular/forms';
 // import { MyPipe } from './custom-pipes/my.pipe';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiHttpInterceptor } from './api-http-interceptor';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,12 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [ActivateGuard, DeactivateGuard, CanLoadGuard],
+  providers: [ActivateGuard, DeactivateGuard, CanLoadGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

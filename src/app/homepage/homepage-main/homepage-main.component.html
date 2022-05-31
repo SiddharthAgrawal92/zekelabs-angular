@@ -45,7 +45,7 @@
 <br />
 <br /> -->
 
-<table>
+<!-- <table>
   <thead>
     <tr customDirective #template_Variable>
       <td>S.No.</td>
@@ -63,7 +63,16 @@
     </tr>
   </tbody>
 </table>
-<br />
+<br /> -->
+
+<div *ngFor="let item of items; let i= index">
+  {{i+1}}
+  <li>User ID: {{item.userId}}</li>
+  <label><b>{{item.title}}</b></label>
+  <p>{{item.body}}</p>
+  <hr />
+</div>
+
 <button (click)="fetchData()">Fetch More Data</button>
 
 <!-- <div>{{description}}</div> -->

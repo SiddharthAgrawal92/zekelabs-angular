@@ -1,5 +1,6 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, DoCheck, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ApiHttpService } from 'src/app/services/api-http.service';
 import { DataService } from 'src/app/services/data.service';
 import { LoggerService } from 'src/app/services/logger.service';
 import { MessageService } from 'src/app/services/message.service';
@@ -13,6 +14,7 @@ import { MessageService } from 'src/app/services/message.service';
   <ng-content></ng-content>
   <button (click)="ping()">Ping</button>
   {{message}}
+  {{items| json}}
   <!-- <h1>{{name2}} User,</h1>
   <h2>Hello {{name}}!</h2> -->
   <app-custom></app-custom>
@@ -41,10 +43,13 @@ export class HelloComponent implements OnChanges,
     counter = 0;
     message: string;
     messageSubscription: Subscription;
+    items: any = [];
 
     constructor(private loggerService: LoggerService,
         private dataService: DataService,
-        private messageService: MessageService) {
+        private messageService: MessageService,
+        private apiHttpService: ApiHttpService
+    ) {
         console.log('Constructor is called!');
     }
 
@@ -53,6 +58,9 @@ export class HelloComponent implements OnChanges,
     }
 
     ngOnInit() {
+        // this.apiHttpService.getData().subscribe(result => {
+        //     this.items = result;
+        // });
         console.log('ngOnInit');
         const items = this.dataService.getData();
         console.log('Items from DataService:', items);

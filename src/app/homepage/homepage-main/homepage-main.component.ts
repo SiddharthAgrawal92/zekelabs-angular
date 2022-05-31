@@ -4,6 +4,7 @@ import { LoggerService } from 'src/app/services/logger.service';
 import { MessageService } from 'src/app/services/message.service';
 
 import { Observable, from, timer, of } from 'rxjs';
+import { ApiHttpService } from 'src/app/services/api-http.service';
 
 @Component({
   selector: 'app-homepage-main',
@@ -21,12 +22,7 @@ export class HomepageMainComponent implements OnInit {
   imageName: string = 'image_name';
   maliciousString: string = "Template malicious string <script>alert('I am dangerous!')</script>";
   description: string;
-  items: any = [
-    { name: 'John Cena', profile: 'SSE', email: 'abc@xyz.com' },
-    { name: 'Michael', profile: 'QA' },
-    { name: 'Nancy', profile: 'Designer' },
-    { name: 'Mathew', profile: 'Developer' },
-  ]
+  items: any = [];
   show: boolean = true;
   switch_expression = "match_span_1";
   customStyle = { 'color': 'white', 'padding-left': '10px', 'margin-top': '10' };
@@ -36,6 +32,7 @@ export class HomepageMainComponent implements OnInit {
   constructor(private dataService: DataService,
     private messageService: MessageService,
     // private loggerService: LoggerService
+    private apiHttpService: ApiHttpService
   ) {
 
   }
@@ -45,6 +42,25 @@ export class HomepageMainComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.apiHttpService.getData().subscribe(result => {
+      // console.log('result', result);
+      if (Array.isArray(result)) {
+        this.items = result;
+      } else {
+        this.items = [result];
+      }
+    }, (err) => {
+      console.log('Error from API', err);
+    });
+    // const myPost = {
+    //   "userId": 1,
+    //   "id": 3,
+    //   "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+    //   "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
+    // };
+    // this.apiHttpService.createPost(myPost).subscribe(result => {
+    //   console.log(result);
+    // })
     // console.log('parent NgOnInit (Para Value):', this.paraElement.nativeElement.innerHTML);
     // this.loggerService.info('App Comp Info: This is a app component/root.');
     // this.loggerService.warn('App Comp Warn: Warning has raised from component/root.');

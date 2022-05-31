@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  model = {};
+  model = {
+    title: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    acceptTerms: false
+  };
 
   constructor() { }
 

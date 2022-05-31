@@ -334,3 +334,54 @@ myForm = this.fb.group({
 4. Pipe class name should be UpperCamelCase(general way of giving name to classes).
 5. Pipe Class must implement a interface called PipeTransform.
 6. Pipe needs to be declared inside a module.
+
+************************************************************************************
+
+###HTTP
+1. Communication from front end to backend is done over Http protocol module
+2. Two ways current browsers to download/upload and send the request to backend services
+    a. HttpRequest that uses XMLHttp interface
+    b. fetch API provides fetch()
+3. Angular provides HTTP module API to use this protocol for communication
+4. Class HttpClient service is used to do the same which is available in @angular/common/http
+5. HttpClient provides method to use the call
+6. This require service injection to be done in constructor
+7. There are different methods inside this service which can be used for specific purposes.
+8. These requests are responsible for sending signature requests and get the different type
+    of response.
+
+###Mistakes to avoid
+1. Don't call the URL directly from component directly
+2. In components URls are not validated and they may throw error when a version upgrade happen
+3. Right way to call the URLs is to get it from a global contact file. Which will make all the 
+    contacts available throughout the application.
+
+##Other benefits of HttpClient over XMLHttp
+1. It gives ease in using testing modules
+2. It provides request and response objects in typed manner
+3. It has support to observable class objects
+4. It provides error handling modules
+
+Note - To use the HttpClient service it's important to import HttpClientModule in your module
+
+
+### HTTP Interceptors
+1. These are used to intercept the HTTP req/res
+2. Class of Interceptor should be created as an @Injectable Service
+3. This should implement an HttpInterceptor interface.
+4. HttpInterceptor will provide a method interceptor()
+
+### EXTRAS (Needs to covered on demand post 10 days of program)
+Sub-Topics
+1. Introduction & Use of external UI Libraries
+2. Testing using Jasmine & Karma
+3. Writing test cases
+4. Material & NG-Prime Setup
+5  Component Inheritance
+6. Component Factory Resolver
+7. Accessibility
+8. Internationalization(i18n)
+9. Use of "aria" tags
+10. How to make website accessible and 508 compliant
+
+
