@@ -371,6 +371,8 @@ Note - To use the HttpClient service it's important to import HttpClientModule i
 3. This should implement an HttpInterceptor interface.
 4. HttpInterceptor will provide a method interceptor()
 
+************************************************************************************
+
 ### EXTRAS (Needs to covered on demand post 10 days of program)
 Sub-Topics
 1. Introduction & Use of external UI Libraries
@@ -385,3 +387,21 @@ Sub-Topics
 10. How to make website accessible and 508 compliant
 
 
+************************************************************************************
+
+### Deployment
+1. For development we should build our app using command "ng serve"
+    $ ng serve --> this will serve the app in PORT 4200 (localhost:4200)
+    $ ng serve --port=4201 --> new app that will server in PORT 4201 (localhost:4201)
+    $ ng serve --host=IP_Address --> App will be served to IP address of your machine
+                                    localhost will get replaced with you IP_Address in this case
+
+Commands to create a application 
+    $ ng new <app_name>  --> create an application
+    $ ng new <workspace_name> --create-application false
+    Reference - https://angular.io/guide/file-structure
+                https://angular.io/cli/new
+
+2. For Production we should build our application using command "ng build"
+    $ ng build --prod --> build your production ready application to an output folder 
+                            configured inside angular.json
