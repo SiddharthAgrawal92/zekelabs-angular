@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { ResolverModule } from '../resolver/resolver.module';
 export abstract class Logger {
   info: any;
   warn: any;
@@ -7,7 +7,7 @@ export abstract class Logger {
 }
 
 @Injectable({
-  providedIn: null
+  providedIn: ResolverModule
 })
 export class LoggerService implements Logger {
 

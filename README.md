@@ -373,22 +373,6 @@ Note - To use the HttpClient service it's important to import HttpClientModule i
 
 ************************************************************************************
 
-### EXTRAS (Needs to covered on demand post 10 days of program)
-Sub-Topics
-1. Introduction & Use of external UI Libraries
-2. Testing using Jasmine & Karma
-3. Writing test cases
-4. Material & NG-Prime Setup
-5  Component Inheritance
-6. Component Factory Resolver
-7. Accessibility
-8. Internationalization(i18n)
-9. Use of "aria" tags
-10. How to make website accessible and 508 compliant
-
-
-************************************************************************************
-
 ### Deployment
 1. For development we should build our app using command "ng serve"
     $ ng serve --> this will serve the app in PORT 4200 (localhost:4200)
@@ -405,3 +389,45 @@ Commands to create a application
 2. For Production we should build our application using command "ng build"
     $ ng build --prod --> build your production ready application to an output folder 
                             configured inside angular.json
+
+### Angular 8 features
+1. Differential loading 
+    At build time two different chunks are created as ES5 & ES2015.
+    ES2015 version require less space and is more performant to load on modern browsers
+    ES5 is required for older browser which only support legacy javascript code
+
+    Without DL 100kb --> 70-80kb (with differential loading)
+2. Ivy rendering engine
+    Earlier View Engine was used
+    Angular compiler is rewritten and there is no changes in the angular app structure
+
+    Benefits:
+    a. Incremental DOM gives better build times
+    b. Better build sizes more compatible with tree shaking
+    c. Lazy loading of components are also supported instead of modules(using component factory resolver)
+
+3. Dynamic importing of modules for lazy loading
+
+4. @angular-bazel to build the angular app
+    default is @angular-devkit/build-angular
+5. Backward compatibility for older router modules
+6. Updated Typescript version 3.4.X
+
+************************************************************************************
+************************************************************************************
+
+### EXTRAS (Needs to covered on demand post 10 days of program)
+Sub-Topics
+
+Session I
+1. Introduction & Use of external UI Libraries
+2. Angular Material setup
+3. introduction to Accessibility
+4. Use of Aria Tags
+
+Session II
+1. Internationalization(i18n)
+2. Extracting locale fields
+3. Writing Test cases
+
+4. Optional - Common file to log the errors in in Reactive Form component

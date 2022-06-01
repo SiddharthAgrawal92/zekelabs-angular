@@ -24,7 +24,7 @@ import { MessageService } from 'src/app/services/message.service';
   {{child_desc}}
   `,
     styleUrls: ['./hello.component.css'],
-    providers: [LoggerService]
+    // providers: [LoggerService]
 })
 export class HelloComponent implements OnChanges,
     OnInit,

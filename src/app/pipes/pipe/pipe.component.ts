@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { GetSize } from 'src/app/custom-pipes/my.pipe';
 import { ApiHttpService } from 'src/app/services/api-http.service';
+import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-pipe',
@@ -26,13 +27,15 @@ export class PipeComponent implements OnInit {
   constructor(
     private percentagePipe: PercentPipe,
     private getSize: GetSize,
-    private apiHttpService: ApiHttpService
+    private apiHttpService: ApiHttpService,
+    private loggerService: LoggerService
   ) {
     this.myValue = this.percentagePipe.transform(this.myValue, '3.3-5');
     this.fileSizeConvertedValue = this.getSize.transform(this.fileSize);
   }
 
   ngOnInit() {
+    this.loggerService.error('Error from pipe component');
     this.observable = this.apiHttpService.getData();
     let setDate = () => {
       setTimeout(() => {

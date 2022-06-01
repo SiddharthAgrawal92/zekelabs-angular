@@ -31,7 +31,7 @@ export class HomepageMainComponent implements OnInit {
 
   constructor(private dataService: DataService,
     private messageService: MessageService,
-    // private loggerService: LoggerService
+    private loggerService: LoggerService,
     private apiHttpService: ApiHttpService
   ) {
 
@@ -62,9 +62,9 @@ export class HomepageMainComponent implements OnInit {
     //   console.log(result);
     // })
     // console.log('parent NgOnInit (Para Value):', this.paraElement.nativeElement.innerHTML);
-    // this.loggerService.info('App Comp Info: This is a app component/root.');
-    // this.loggerService.warn('App Comp Warn: Warning has raised from component/root.');
-    // this.loggerService.error('App Comp Error: Error has occurred in app component/root.');
+    this.loggerService.info('App Comp Info: This is a app component/root.');
+    this.loggerService.warn('App Comp Warn: Warning has raised from component/root.');
+    this.loggerService.error('App Comp Error: Error has occurred in app component/root.');
   }
 
   fetchData() {
