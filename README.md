@@ -416,18 +416,62 @@ Commands to create a application
 ************************************************************************************
 ************************************************************************************
 
-### EXTRAS (Needs to covered on demand post 10 days of program)
-Sub-Topics
+### Testing
 
-Session I
-1. Introduction & Use of external UI Libraries
-2. Angular Material setup
-3. introduction to Accessibility
-4. Use of Aria Tags
+Link - https://angular.io/guide/testing-components-scenarios (MUST READ for different use cases)
+        https://angular.io/guide/testing-code-coverage
+        
+1. Tools like Jasmine and karma are required to test the application
+2. For Test Driven Development(TDD) approach we are required to use above tools
 
-Session II
-1. Internationalization(i18n)
-2. Extracting locale fields
-3. Writing Test cases
+Benefits of TDD:
+1. Improve the design implementation
+2. Allows refactoring easily
+3. Helps in adding new features without breaking anything else present in the app
 
-4. Optional - Common file to log the errors in in Reactive Form component
+Command to run Test cases - 
+    $ng test
+
+--> While creating a component/module/service/directive etc by default spec files are created
+    they can only be excluded if we provide param in CLI as --spec=false
+
+
+## Internationalization (i18n)
+
+Link - https://angular.io/guide/i18n-overview
+
+1. i18n is used to provide your application in different locales.
+2. Steps to perform internationalization
+    a. Extraction of i18n tags in a local file
+    b. Changing these files to different locales (clone the extracted file in to different locales)
+3. Command to install the angular package for localization     
+    $npm install @angular/localize
+4. Internationalization packages for runtime switching between locales
+    Link -  https://ngneat.github.io/transloco/
+            http://www.ngx-translate.com/
+
+
+## Angular Material
+
+Link -  https://material.angular.io/guide/getting-started
+        https://material.angular.io/components/categories
+        https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
+
+1. Command to install angular material and it's associated packages but also it will add/modify 
+    the existing files required for the base package to run properly
+    
+    $ng add @angular/material@8.2.3
+
+2. Create a material module file that will contain all the material modules to be used
+3. Import newly created material module in app.module.ts
+4. Start writing your material code(selectors) in templates.
+
+
+## Assesibility 
+
+Links - https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics
+        https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
+
+Not only aria tags but also color contrast you've to take care of.
+
+Green , Red, Yellow

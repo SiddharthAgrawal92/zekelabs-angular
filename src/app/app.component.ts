@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'my-app';
+  title2 = 'title-2'
   constructor() { }
 
   ngOnInit() { }
+
 }

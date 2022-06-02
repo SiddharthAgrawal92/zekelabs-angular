@@ -5,6 +5,7 @@ import { ReactiveFormRoutingModule } from './reactive-form-routing.module';
 import { BasicComponent } from './basic/basic.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdvanceComponent } from './advance/advance.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { AdvanceComponent } from './advance/advance.component';
   imports: [
     CommonModule,
     ReactiveFormRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class ReactiveFormModule { }

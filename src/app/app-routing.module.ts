@@ -7,6 +7,7 @@ import { FormComponent } from "./form/form.component";
 import { ActivateGuard } from "./guards/activate.guard";
 import { CanLoadGuard } from "./guards/can-load.guard";
 import { DeactivateGuard } from "./guards/deactivate.guard";
+import { InternationalizationComponent } from "./internationalization/internationalization.component";
 import { NotfoundComponent } from "./notfound/notfound.component";
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     // canLoad: [CanLoadGuard],
   },
   { path: 'form', component: FormComponent },
+  { path: 'i18n', component: InternationalizationComponent },
   { path: 'reactive-form', loadChildren: () => import('./reactive-form/reactive-form.module').then(module => module.ReactiveFormModule) },
   { path: '**', component: NotfoundComponent }
 ]

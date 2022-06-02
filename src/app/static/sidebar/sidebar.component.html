@@ -1,6 +1,9 @@
-<p>sidebar works!</p>
+<!-- <p>sidebar works!</p>
 
 <button routerLink="/homepage" routerLinkActive="activeLink">Homepage</button>
+&nbsp;&nbsp;
+
+<button routerLink="/i18n" routerLinkActive="activeLink">I18N</button>
 &nbsp;&nbsp;
 
 <button routerLink="/my-pipes" routerLinkActive="activeLink">Pipes</button>
@@ -29,14 +32,58 @@
   <button>Contact Single-Param</button>
 </a>
 
-<!-- <a routerLink="/contact/users/customer">
-  <button>Contact Multi-Param</button>
-</a> -->
-
 <a routerLink="/contact" [queryParams]="{name: 'sid', year: 2022}" [fragment]="'hello'">
   <button>Contact queryParam property</button>
-</a>
-
-<!-- <a routerLink="/team">
-  Team
 </a> -->
+
+<mat-sidenav-container>
+
+
+  <mat-sidenav #sideNav>
+    <mat-nav-list>
+
+      <!--Iterating through menu list-->
+      <ng-container *ngFor="let menu of menuList">
+        <ng-container [ngTemplateOutlet]="menu.children ? childMenu : parentMenu"
+          [ngTemplateOutletContext]="{menu:menu}">
+        </ng-container>
+      </ng-container>
+
+      <ng-template #parentMenu let-menu="menu">
+        <mat-list-item (click)="sideNav.toggle()" [routerLink]="menu.routerLink" routerLinkActive="activeLink"
+          [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon>{{menu.icon}}</mat-icon> {{menu.text}}
+        </mat-list-item>
+      </ng-template>
+
+      <ng-template #childMenu let-menu="menu">
+        <mat-expansion-panel [class.mat-elevation-z0]="true">
+          <mat-expansion-panel-header>
+            <mat-icon>{{menu.icon}}</mat-icon> {{menu.text}}
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <mat-list-item (click)="sideNav.toggle()" *ngFor="let subMenu of menu.children"
+              [routerLink]="subMenu.routerLink" routerLinkActive="activeLink" [routerLinkActiveOptions]="{exact: true}">
+              <mat-icon>{{subMenu.icon}}</mat-icon> {{subMenu.text}}
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </ng-template>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <mat-toolbar color="primary">
+        <button (click)="sideNav.open()" mat-icon-button>
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,12 +7,16 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./basic.component.css']
 })
 export class BasicComponent implements OnInit {
-
+  @ViewChild('pBar', { static: false }) pBar: ElementRef;
   name = new FormControl('');
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  completeProgressBar() {
+    this.pBar.nativeElement.setAttribute('aria-valuenow', 100);
   }
 
   updateName() {

@@ -1,4 +1,16 @@
 <br />
+
+<div #pBar id="percent-loaded" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+    Aria Testing Progress Bar
+</div>
+
+<br />
+
+<input aria-required="true" value="120" />
+
+<button mat-raised-button color="warn" (click)="completeProgressBar()">Complete Progress Bar</button>
+
+
 <label for="name">Name:</label>
 <input type="text" id="name" [formControl]="name" />
 
